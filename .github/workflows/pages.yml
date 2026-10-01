@@ -1,0 +1,50 @@
+name: Pages
+
+on:
+  push:
+    branches: ["**"]
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - name: Fetch repo stats
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "users/kaiser62/repos?type=owner&per_page=100" \
+            --jq '[.[] | select(.private == false) | {name, stargazers_count, language, pushed_at}]' \
+            > _data/repos.json || echo '[]' > _data/repos.json
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - uses: actions/upload-pages-artifact@v5
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

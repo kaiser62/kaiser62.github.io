@@ -1,0 +1,13 @@
+{%- assign p = include.project -%}
+{%- assign repo = site.data.repos | where: "name", p.slug | first -%}
+<li class="row" data-slug="{{ p.slug }}">
+  <span class="row-name mono">
+    {%- if p.private %}{{ p.title }} <span class="badge badge-private">private</span>
+    {%- else %}<a href="https://github.com/kaiser62/{{ p.slug }}">{{ p.title }}</a>{% endif -%}
+  </span>
+  <span class="row-tagline">{{ p.tagline }}</span>
+  <span class="row-meta mono muted">
+    {%- if repo and repo.language %}{{ repo.language }}{% else %}{{ p.tech | first }}{% endif -%}
+    {%- if p.private != true and repo %} &middot; <time datetime="{{ repo.pushed_at | date_to_xmlschema }}">{{ repo.pushed_at | date: "%Y-%m-%d" }}</time>{% endif -%}
+  </span>
+</li>

@@ -1,0 +1,26 @@
+{%- assign p = include.project -%}
+{%- assign repo = site.data.repos | where: "name", p.slug | first -%}
+<li class="card" data-slug="{{ p.slug }}">
+  <div class="card-head mono">
+    <span class="accent" aria-hidden="true">*</span>
+    {%- if p.private %}
+    <span class="card-title">{{ p.title }}</span>
+    <span class="badge badge-private">private</span>
+    {%- else %}
+    <a class="card-title" href="https://github.com/kaiser62/{{ p.slug }}">{{ p.title }}</a>
+    {%- endif %}
+  </div>
+  <p class="tagline">{{ p.tagline }}</p>
+  <p class="desc">{{ p.description }}</p>
+  <ul class="tags mono">{% for t in p.tech %}<li>{{ t }}</li>{% endfor %}</ul>
+  {%- if p.private != true and repo %}
+  <p class="meta mono muted">
+    <span>&#9733; {{ repo.stargazers_count }}</span>
+    {%- if repo.language %}<span>{{ repo.language }}</span>{% endif %}
+    <span>updated <time datetime="{{ repo.pushed_at | date_to_xmlschema }}">{{ repo.pushed_at | date: "%Y-%m-%d" }}</time></span>
+  </p>
+  {%- endif %}
+  {%- if p.homepage and p.homepage != "" %}
+  <p class="mono"><a href="{{ p.homepage }}">live demo &rarr;</a></p>
+  {%- endif %}
+</li>

@@ -1,0 +1,13 @@
+node_modules/
+.site-preview/
+.artifact/
+test-results/
+playwright-report/
+_site/
+.jekyll-cache/
+.claude-flow/
+.superpowers/
+_data/repos.json
+
+docs/
+tests/forbidden.local.json

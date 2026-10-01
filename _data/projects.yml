@@ -1,0 +1,102 @@
+- slug: dedupr
+  title: dedupr
+  tagline: GPU-accelerated, mirror-aware video deduplication
+  description: >-
+    A command-line tool that finds duplicate videos even when they have been
+    flipped, rescaled or re-encoded, by comparing perceptual keyframe hashes in
+    both orientations. It uses CUDA hardware decoding, caches fingerprints in
+    SQLite for fast rescans, and keeps the best copy while quarantining the rest.
+  tech: [Python, CUDA, FFmpeg, SQLite]
+  private: false
+  featured: true
+  homepage: ""
+
+- slug: comfy-mobile-harness
+  title: comfy-mobile-harness
+  tagline: Phone-first web UI for a local ComfyUI image-to-video setup
+  description: >-
+    A web front end that lets a phone drive a local ComfyUI install: pick a
+    photo, describe the motion, and render a short video on the PC's GPU. It adds
+    a render queue, run history, a gallery and live progress, so a batch can be
+    managed entirely from the phone.
+  tech: [Python, aiohttp, ComfyUI, Wan 2.2, JavaScript]
+  private: true
+  featured: true
+  homepage: ""
+
+- slug: torsync
+  title: torsync
+  tagline: Cross-seeding tooling for a qBittorrent library
+  description: >-
+    Scripts that inventory local torrents and search an indexer for releases
+    with byte-identical sizes, so existing data can be seeded elsewhere without
+    re-downloading. The repo also includes a patched Cloudflare-solver image,
+    after measuring that the upstream one silently dropped request cookies.
+  tech: [Python, Shell, Docker, Prowlarr, qBittorrent]
+  private: false
+  featured: true
+  homepage: ""
+
+- slug: soundtouch-alarm
+  title: soundtouch-alarm
+  tagline: Self-hosted alarm clock for a Bose SoundTouch speaker
+  description: >-
+    A single FastAPI process that wakes a networked speaker through its local
+    XML API, serving both the JSON API and a no-build web UI. It fades volume
+    in, re-selects a preset when a track ends, and flags silent rings; a dead
+    speaker never crashes the scheduler.
+  tech: [Python, FastAPI, Docker, JavaScript]
+  private: false
+  featured: true
+  homepage: ""
+
+- slug: torbox-webapp
+  title: torbox-webapp
+  tagline: Self-hosted media library and player for a TorBox account
+  description: >-
+    A mobile-friendly web app that turns a TorBox account into a personal media
+    library, with folder and poster views, in-browser playback and hand-off to
+    external players. It is installable as a PWA and targets iOS Safari.
+  tech: [TypeScript, Next.js, React, Tailwind CSS, Docker]
+  private: true
+  featured: true
+  homepage: ""
+
+- slug: ppsa
+  title: ppsa
+  tagline: Portable Palworld server appliance that boots from USB
+  description: >-
+    A bootable Debian image that runs a full Palworld dedicated server from a
+    USB drive, SSD or VM disk. It uses a Secure Boot-signed boot chain, a Docker
+    Compose stack with a web UI, WireGuard-gated remote access, a Wi-Fi setup
+    hotspot and scheduled backups.
+  tech: [Shell, Python, Docker, WireGuard, Debian]
+  private: false
+  featured: false
+  homepage: ""
+
+- slug: routine-scheduler-flask
+  title: routine-scheduler-flask
+  tagline: Small Flask app for an editable routine table
+  description: >-
+    A Flask web app that shows an editable routine table in the browser, with an
+    admin login gating changes. It keeps teacher records in SQLite and renders
+    them server-side, with a Materialize-styled front end.
+  tech: [Python, Flask, SQLite, JavaScript]
+  private: false
+  featured: false
+  homepage: ""
+
+- slug: visoswap
+  title: visoswap
+  tagline: Real-time video face-swap playback built on a vendored engine
+  description: >-
+    A standalone video face-swap application that plays results in real time
+    while frames are generated asynchronously behind the playhead, falling back
+    to the original frame instead of stalling. It vendors an open-source
+    inference engine with the Qt UI removed, enforced by a test, and runs on a
+    free Kaggle GPU.
+  tech: [Python, TypeScript, ONNX, Kaggle]
+  private: false
+  featured: false
+  homepage: ""

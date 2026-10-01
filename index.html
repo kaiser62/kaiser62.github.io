@@ -1,0 +1,46 @@
+---
+layout: default
+---
+{%- assign featured = site.data.projects | where_exp: "p", "p.featured == true" -%}
+{%- assign more = site.data.projects | where_exp: "p", "p.featured != true" -%}
+<header class="wrap hero">
+  <nav class="topbar mono">
+    <span class="muted">~/kaiser62</span>
+    <button id="theme-toggle" type="button">theme</button>
+  </nav>
+  <p class="prompt mono"><span class="accent">kaiser62@github</span>:~$ whoami<span class="cursor" aria-hidden="true"></span></p>
+  <h1 class="mono">{{ site.data.profile.bio }}</h1>
+  <p class="lede">{{ site.data.profile.summary }}</p>
+  <p class="mono"><a href="https://github.com/kaiser62">github.com/kaiser62</a></p>
+</header>
+
+<main class="wrap">
+  <section id="featured" aria-labelledby="featured-h">
+    <h2 id="featured-h" class="mono section-h"><span class="accent">$</span> git log --featured</h2>
+    <ol class="cards">
+      {%- for p in featured %}{% include project-card.html project=p %}{% endfor %}
+    </ol>
+  </section>
+
+  <section id="more" aria-labelledby="more-h">
+    <h2 id="more-h" class="mono section-h"><span class="accent">$</span> ls ~/projects</h2>
+    <ul class="rows">
+      {%- for p in more %}{% include project-row.html project=p %}{% endfor %}
+    </ul>
+  </section>
+
+  <section id="stack" aria-labelledby="stack-h">
+    <h2 id="stack-h" class="mono section-h"><span class="accent">$</span> cat stack.txt</h2>
+    {%- for g in site.data.profile.stack %}
+    <div class="stack-group">
+      <h3 class="mono muted">{{ g.group }}</h3>
+      <ul class="tags mono">{% for t in g.items %}<li>{{ t }}</li>{% endfor %}</ul>
+    </div>
+    {%- endfor %}
+  </section>
+</main>
+
+<footer class="wrap footer mono muted">
+  <a href="https://github.com/kaiser62">github.com/kaiser62</a>
+  <span>built {{ site.time | date: "%Y-%m-%d" }} with Jekyll</span>
+</footer>

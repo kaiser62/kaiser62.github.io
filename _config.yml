@@ -1,0 +1,24 @@
+title: kaiser62
+description: Builds media tooling, GPU pipelines, and self-hosted infra
+url: https://kaiser62.github.io
+baseurl: ""
+repository: kaiser62/kaiser62.github.io
+lang: en
+plugins:
+  - jekyll-github-metadata
+  - jekyll-seo-tag
+  - jekyll-sitemap
+exclude:
+  - docs/
+  - profile-readme/
+  - tests/
+  - scripts/
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - playwright.config.mjs
+  - .site-preview/
+  - .artifact/
+  - .claude-flow/
+  - .superpowers/
+  - .gitignore

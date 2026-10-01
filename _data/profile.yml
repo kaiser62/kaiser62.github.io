@@ -1,0 +1,15 @@
+bio: Builds media tooling, GPU pipelines, and self-hosted infra
+summary: >-
+  Projects span GPU video processing, self-hosted services and appliances, and
+  small web apps. The common thread is practical tooling that runs on my own
+  hardware, from FFmpeg and CUDA pipelines to Docker stacks and WireGuard-gated
+  remote access.
+stack:
+  - group: Languages
+    items: [Python, TypeScript, JavaScript, Shell]
+  - group: Platforms
+    items: [Docker, WireGuard, Debian, GitHub Actions]
+  - group: Media & ML
+    items: [FFmpeg, CUDA, ComfyUI, Wan 2.2, ONNX]
+  - group: Frameworks
+    items: [FastAPI, Flask, Next.js, aiohttp]
